@@ -138,6 +138,17 @@ nav a:hover {
   color: var(--brand);
 }
 
+/* Hide sidebar by default on large screens */
+@media (min-width: 769px) {
+  #sidebar {
+    display: none !important;
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+}
+
 .actions {
   display: flex;
   gap: 10px;
@@ -434,5 +445,6 @@ footer {
   font-size: 18px;
   font-weight: bold;
  }
+
 
 
