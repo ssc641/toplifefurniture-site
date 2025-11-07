@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Shop — SD Shopera Danceny Furnitures</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo">SD</div>
+        <div>
+          <div class="brand-name">SD Shopera Danceny Furnitures</div>
+          <div class="tagline">Modern & classic furniture</div>
+        </div>
+      </div>
+
+      <nav id="main-navbar">
+        <a href="index.html">Home</a>
+        <a href="Shop.html">Shop</a>
+        <a href="cart.html">Cart</a>
+        <a href="Contact.html">Contact</a>
+      </nav>
+
+      <div class="menu-toggle" onclick="toggleSidebar()">☰</div>
+
+      <div id="sidebar">
+        <a href="index.html">Home</a>
+        <a href="Shop.html">Shop</a>
+        <a href="cart.html">Cart</a>
+        <a href="Contact.html">Contact</a>
+      </div>
+
+      <div class="actions">
+        <a href="cart.html"><button class="secondary">Cart</button></a>
+        <a href="shop.html" target="_blank"><button class="secondary">Shop Now</button></a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Shop Section -->
+  <main class="container">
+    <section class="section">
+      <h1>Our Furniture Collection</h1>
+
+      <div class="product-grid">
+        <!-- Product 1 -->
+        <div class="product-card">
+          <img src="images/fridge.jpg" alt="Fridge" />
+          <h3>Fridge</h3>
+          <p>$210.00</p>
+          <button onclick="addToCart('fridge', 120.00, 'fridge.jpg')">Add to Cart</button>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card">
+          <img src="images/simple bed.png" alt="bed" />
+          <h3>bed# wrestlemania</h3>
+          <p>$45.00</p>
+          <button onclick="addToCart('bed', 45.00, 'images/simple bed.png')">Add to Cart</button>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card">
+          <img src="images/Wardrobe 4.png" alt="Wardrobe" />
+          <h3>Wardrobe</h3>
+          <p>$150.00</p>
+          <button onclick="addToCart('Wardrobe', 150.00, 'images/Wardrobe 4.png')">Add to Cart</button>
+        </div>
+
+        
+         <!-- Product 4 -->
+        <div class="product-card">
+          <img src="tlimages/wbed.png" alt="bed" />
+          <h3>Wardrobe</h3>
+          <p>$150.00</p>
+          <button onclick="addToCart('Wardrobe', 150.00, 'images/Wardrobe 5.png')">Add to Cart</button>
+        </div>
+
+         <!-- Product 5 -->
+        <div class="product-card">
+          <img src="images/kitchen unit (2).png" alt="kitchen" />
+          <h3>kitchen</h3>
+          <p>$230.00</p>
+          <button onclick="addToCart('kitchen', 200.00, 'images/kitchen unit (2).png')">Add to Cart</button>
+        </div>
+
+         <!-- Product 3 -->
+        <div class="product-card">
+          <img src="images/tv.png" alt="Television" />
+          <h3>Ecco Tv 65 inch</h3>
+          <p>$150.00</p>
+          <button onclick="addToCart('Television', 120.00, 'images/tv.png')">Add to Cart</button>
+        </div>
+
+      
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© <span id="year"></span> SD Shopera Danceny Furnitures</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function toggleSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      sidebar.style.left = sidebar.style.left === "0px" ? "-250px" : "0px";
+    }
+
+    function addToCart(product, price, image) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.push({ product, price, image });
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert("Item added to cart!");
+    }
+  </script>
+</body>
+</html>
