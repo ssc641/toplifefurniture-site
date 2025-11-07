@@ -11,7 +11,7 @@
   <header>
     <div class="container nav">
       <div class="brand">
-        <div class="logo">SD</div>
+        <img src="images/logo.png" alt="SD Logo" class="logo-img" />
         <div>
           <div class="brand-name">SD Shopera Danceny Furnitures</div>
           <div class="tagline">Modern & classic furniture</div>
@@ -28,6 +28,7 @@
       <div class="menu-toggle" onclick="toggleSidebar()">☰</div>
 
       <div id="sidebar">
+        <div class="sidebar-close" onclick="toggleSidebar()">✕</div>
         <a href="index.html">Home</a>
         <a href="Shop.html">Shop</a>
         <a href="cart.html">Cart</a>
@@ -104,15 +105,14 @@
   <!-- Footer -->
   <footer>
     <p>© <span id="year"></span> SD Shopera Danceny Furnitures</p>
-  </footer>
+          </footer>
 
   <!-- Scripts -->
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
     function toggleSidebar() {
-      const sidebar = document.getElementById("sidebar");
-      sidebar.style.left = sidebar.style.left === "0px" ? "-250px" : "0px";
+      document.body.classList.toggle('sidebar-open');
     }
 
     function addToCart(product, price, image) {
@@ -123,4 +123,5 @@
     }
   </script>
 </body>
-</html>
+          </html>
+
