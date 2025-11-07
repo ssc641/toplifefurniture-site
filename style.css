@@ -40,22 +40,17 @@ header {
   gap: 12px;
 }
 
-.logo {
-  background-color: white;
-  color: var(--accent);
-  font-weight: bold;
-  padding: 8px;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 
 .brand-name {
   font-weight: bold;
   font-size: 18px;
+}
+.logo-img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  border-radius: 8px;
 }
 
 .tagline {
@@ -445,6 +440,7 @@ footer {
   font-size: 18px;
   font-weight: bold;
  }
+
 
 
 
