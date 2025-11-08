@@ -46,6 +46,27 @@
     <section class="section">
       <h1>Our Furniture Collection</h1>
 
+      <div class="shop-filter">
+  <input type="text" id="searchInput" placeholder="Search products..." />
+  <div class="category-buttons">
+    <button onclick="filterCategory('all')">All</button>
+    <button onclick="filterCategory('dining')">Dining</button>
+    <button onclick="filterCategory('bedroom')">Bedroom</button>
+    <button onclick="filterCategory('lounge')">Lounge</button>
+    <button onclick="filterCategory('outdoor')">Outdoor</button>
+    <button onclick="filterCategory('kitchen')">Kitchen</button>
+  </div>
+</div>
+
+<div class="product-list">
+  <div class="product-card dining">...</div>
+  <div class="product-card bedroom">...</div>
+  <div class="product-card lounge">...</div>
+  <div class="product-card outdoor">...</div>
+  <div class="product-card kitchen">...</div>
+  <!-- Repeat for each product -->
+</div>
+
       <div class="product-grid">
         <!-- Product 1 -->
         <div class="product-card">
@@ -56,7 +77,7 @@
         </div>
 
         <!-- Product 2 -->
-        <div class="product-card">
+        <div class="product-card. dining">
           <img src="tlimages/sofas.png" alt="sofa" />
           <h3>sofa black</h3>
           <p>$450.00</p>
@@ -64,7 +85,7 @@
         </div>
 
         <!-- Product 3 -->
-        <div class="product-card">
+        <div class="product-card dining">
           <img src="tlimages/csofas.png" alt="sofa" />
           <h3>cream sofa</h3>
           <p>$350.00</p>
@@ -73,7 +94,7 @@
 
         
          <!-- Product 4 -->
-        <div class="product-card">
+        <div class="product-card bedroom">
           <img src="tlimages/wbed.png" alt="bed" />
           <h3>bed</h3>
           <p>$150.00</p>
@@ -81,7 +102,7 @@
         </div>
 
          <!-- Product 5 -->
-        <div class="product-card">
+        <div class="product-card bedroom">
           <img src="tlimages/ibed.png.png" alt="kitchen" />
           <h3>bed</h3>
           <p>$230.00</p>
@@ -120,9 +141,31 @@
       localStorage.setItem("cart", JSON.stringify(cart));
       alert("Item added to cart!");
     }
-  </script>
+
+
+  function filterCategory(category) {
+  const products = document.querySelectorAll('.product-card');
+  products.forEach(product => {
+    if (category === 'all' || product.classList.contains(category)) {
+      product.style.display = 'block';
+    } else {
+      product.style.display = 'none';
+    }
+  });
+}
+
+document.getElementById('searchInput').addEventListener('input', function () {
+  const query = this.value.toLowerCase();
+  const products = document.querySelectorAll('.product-card');
+  products.forEach(product => {
+    const text = product.textContent.toLowerCase();
+    product.style.display = text.includes(query) ? 'block' : 'none';
+  });
+});
+                   </script>
 </body>
           </html>
+
 
 
 
