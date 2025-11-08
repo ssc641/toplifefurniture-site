@@ -167,6 +167,19 @@ nav a:hover {
   color: #333;
 }
 
+.shop-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.category-buttons button {
+  margin-right: 10px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
 .secondary {
   background-color: transparent;
   border: 2px solid white;
@@ -453,6 +466,7 @@ footer {
   font-size: 18px;
   font-weight: bold;
  }
+
 
 
 
