@@ -51,6 +51,8 @@ header {
   height: 48px;
   object-fit: contain;
   border-radius: 8px;
+  margin-left: -20px;
+  margin-right: 8px
 }
 
 .tagline {
@@ -259,9 +261,19 @@ input[type="email"] {
   gap: 20px;
 }
 
-.product-card  img {
+.product-card img {
   width: 100%;
- max-width: 220px;
+  max-width: 250px; /* Adjust this value as needed */
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.product img {
+  width: 100%;
+  max-width: 300px; /* Adjust this value as needed */
+  height: auto;
+  object-fit: cover;
   border-radius: 8px;
 }
 
@@ -441,6 +453,7 @@ footer {
   font-size: 18px;
   font-weight: bold;
  }
+
 
 
 
