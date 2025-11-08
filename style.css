@@ -263,7 +263,7 @@ input[type="email"] {
 
 .product-card img {
   width: 100%;
-  max-width: 250px; /* Adjust this value as needed */
+  max-width: 469px; /* Adjust this value as needed */
   height: auto;
   object-fit: cover;
   border-radius: 8px;
@@ -453,6 +453,7 @@ footer {
   font-size: 18px;
   font-weight: bold;
  }
+
 
 
 
