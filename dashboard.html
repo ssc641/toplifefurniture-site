@@ -3,25 +3,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Staff Dashboard — SD Shopera Danceny Furnitures</title>
+  <title>Shop — Top Life Furnitures</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- Header -->
   <header>
     <div class="container nav">
       <div class="brand">
-        <div class="logo">SD</div>
+        <img src="logo.png" alt=" Logo" class="logo-img" />
         <div>
-          <div class="brand-name">SD Shopera Danceny Furnitures</div>
-          <div class="tagline">Staff Dashboard</div>
+          <div class="brand-name">Top Life Furnitures</div>
+          <div class="tagline">Modern & classic furniture</div>
         </div>
       </div>
+
       <nav id="main-navbar">
         <a href="index.html">Home</a>
         <a href="Shop.html">Shop</a>
         <a href="cart.html">Cart</a>
-        <a href="dashboard.html">Dashboard</a>
+        <a href="Contact.html">Contact</a>
       </nav>
+
+      <div class="menu-toggle" onclick="toggleSidebar()">☰</div>
+
+      <div id="sidebar">
+        <div class="sidebar-close" onclick="toggleSidebar()">✕</div>
+        <a href="index.html">Home</a>
+        <a href="Shop.html">Shop</a>
+        <a href="cart.html">Cart</a>
+        <a href="Contact.html">Contact</a>
+      </div>
+
+      <div class="actions">
+        <a href="cart.html"><button class="secondary">Cart</button></a>
+      </div>
     </div>
   </header>
 
@@ -80,3 +96,4 @@
   </script>
 </body>
 </html>
+
