@@ -3,41 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Shop — Top Life Furnitures</title>
+  <title>Dashboard — Top Life Furnitures</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Header -->
   <header>
     <div class="container nav">
       <div class="brand">
-        <img src="logo.png" alt=" Logo" class="logo-img" />
+        <img src="logo.png" alt="Logo" class="logo-img" />
         <div>
           <div class="brand-name">Top Life Furnitures</div>
           <div class="tagline">Modern & classic furniture</div>
         </div>
       </div>
-
       <nav id="main-navbar">
         <a href="index.html">Home</a>
         <a href="Shop.html">Shop</a>
         <a href="cart.html">Cart</a>
         <a href="Contact.html">Contact</a>
       </nav>
-
-      <div class="menu-toggle" onclick="toggleSidebar()">☰</div>
-
-      <div id="sidebar">
-        <div class="sidebar-close" onclick="toggleSidebar()">✕</div>
-        <a href="index.html">Home</a>
-        <a href="Shop.html">Shop</a>
-        <a href="cart.html">Cart</a>
-        <a href="Contact.html">Contact</a>
-      </div>
-
-      <div class="actions">
-        <a href="cart.html"><button class="secondary">Cart</button></a>
-      </div>
     </div>
   </header>
 
@@ -49,15 +33,13 @@
   </main>
 
   <footer>
-    <p>© <span id="year"></span> SD Shopera Danceny Furnitures</p>
+    <p>© <span id="year"></span> Top Life Furnitures</p>
   </footer>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Sample orders for testing (replace with real data source later)
     const orders = JSON.parse(localStorage.getItem("orders")) || [];
-
     const container = document.getElementById("orders-container");
 
     if (orders.length === 0) {
@@ -74,7 +56,9 @@
           <p><strong>Payment Method:</strong> ${order.payment_method}</p>
           <p><strong>Transaction Ref:</strong> ${order.reference}</p>
           <p><strong>Items:</strong></p>
-          <ul>${order.cart.map(item => `<li>${item.product} - $${item.price}</li>`).join("")}</ul>
+          <ul>
+            ${order.cart.map(item => `<li>${item.product} - $${item.price}</li>`).join("")}
+          </ul>
           <p><strong>Total:</strong> $${order.cart.reduce((sum, item) => sum + parseFloat(item.price), 0).toFixed(2)}</p>
           <label for="status-${index}"><strong>Status:</strong></label>
           <select id="status-${index}" onchange="updateStatus(${index}, this.value)">
@@ -95,5 +79,4 @@
     }
   </script>
 </body>
-</html>
-
+                                   </html>
