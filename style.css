@@ -1,30 +1,119 @@
+/*
+|--------------------------------------------------------------------------
+| 1. Variables & Utilities
+|--------------------------------------------------------------------------
+*/
+
 :root {
-  --brand: #d5cfc7;       /* Cream */
-  --muted: #7f8c8d;        /* Soft grey */
-  --light: #ffffff;        /* White */
-  --card-bg: #f5f5f5;      /* Light grey for cards */
-  --border: #e0e0e0;       /* Subtle border */
-  --accent: #a89f94;       /* Rich taupe for highlights */
+  /* Colors */
+  --color-brand: #d5cfc7;       /* Cream */
+  --color-accent: #a89f94;      /* Rich taupe for highlights */
+  --color-muted: #7f8c8d;       /* Soft grey */
+  --color-light: #ffffff;       /* White */
+  --color-card-bg: #f5f5f5;     /* Light grey for cards */
+  --color-border: #e0e0e0;      /* Subtle border */
+  --color-text-dark: #333;      /* Main text color */
+  --color-text-light: white;
+
+  /* Spacing (Modular Scale) */
+  --spacing-xs: 8px;
+  --spacing-sm: 12px;
+  --spacing-md: 20px;
+  --spacing-lg: 40px;
+  --spacing-xl: 60px;
 }
+
+/* Utility Classes for quick spacing */
+.mt-sm { margin-top: var(--spacing-sm); }
+.mt-md { margin-top: var(--spacing-md); }
+.mt-lg { margin-top: var(--spacing-lg); }
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+
+
+/*
+|--------------------------------------------------------------------------
+| 2. Base Styles
+|--------------------------------------------------------------------------
+*/
 
 body {
   font-family: 'Segoe UI', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: var(--light);
-  color: #333;
+  background-color: var(--color-light);
+  color: var(--color-text-dark);
 }
 
 .container {
   max-width: 1200px;
   margin: auto;
-  padding: 20px;
+  padding: var(--spacing-md);
 }
 
+.section {
+  /* Removed fixed margin-top to apply spacing via utilities/layout */
+  margin-top: var(--spacing-xl); 
+}
+
+.section-subtext {
+  color: var(--color-muted);
+}
+
+/* Input Styles */
+input[type="search"],
+input[type="email"] {
+  padding: 10px;
+  border-radius: var(--spacing-xs);
+  border: 1px solid var(--color-border);
+  flex: 1;
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| 3. Button Styles
+|--------------------------------------------------------------------------
+*/
+
+.btn {
+  /* Base button styles */
+  background-color: var(--color-accent);
+  color: var(--color-text-light);
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-decoration: none; /* Make buttons work as links */
+  display: inline-block;
+}
+
+.btn:hover {
+  background-color: var(--color-brand);
+  color: var(--color-text-dark);
+}
+
+.btn-secondary {
+  /* Modifier for secondary button */
+  background-color: transparent;
+  border: 2px solid var(--color-text-light);
+  color: var(--color-text-light);
+  padding: 8px 14px;
+}
+
+/*
+|--------------------------------------------------------------------------
+| 4. Header & Navigation
+|--------------------------------------------------------------------------
+*/
+
 header {
-  background-color: var(--brand);
-  color: white;
-  padding: 20px 0;
+  background-color: var(--color-brand);
+  color: var(--color-text-light);
+  padding: var(--spacing-md) 0;
 }
 
 .nav {
@@ -37,59 +126,71 @@ header {
 .brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--spacing-sm);
 }
-
-
 
 .brand-name {
   font-weight: bold;
   font-size: 18px;
 }
+
 .logo-img {
   width: 48px;
   height: 48px;
   object-fit: contain;
-  border-radius: 8px;
-  margin-left: -20px;
-  margin-right: 8px
+  border-radius: var(--spacing-xs);
+  /* Adjusted margin for layout clarity */
+  margin: 0 var(--spacing-xs) 0 calc(-1 * var(--spacing-md)); 
 }
 
 .tagline {
   font-size: 12px;
-  color: var(--muted);
+  color: var(--color-muted);
   font-weight: 600;
 }
 
 nav a {
-  color: white;
+  color: var(--color-text-light);
   text-decoration: none;
   font-weight: 600;
-  margin-right: 20px;
+  margin-right: var(--spacing-md);
 }
 
 nav a:hover {
-  color: var(--accent);
+  color: var(--color-accent);
 }
 
 .menu-toggle {
   font-size: 24px;
   cursor: pointer;
-  color: var(--accent);
+  color: var(--color-accent);
   padding: 10px;
 }
+
+.actions {
+  display: flex;
+  gap: var(--spacing-xs);
+  margin-top: 10px; /* Keep small top margin for mobile visibility */
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| 5. Sidebar Navigation
+|--------------------------------------------------------------------------
+*/
 
 #sidebar {
   display: none;
   flex-direction: column;
-  background-color: var(--card-bg); /* Light grey background */
+  background-color: var(--color-card-bg);
   position: absolute;
-  top: 70px;
+  top: 70px; /* Assuming header height around 70px */
   right: 0;
   width: 240px;
-  padding: 20px;
+  padding: var(--spacing-md);
   box-shadow: -4px 0 12px rgba(0, 0, 0, 0.1);
-  border-left: 1px solid var(--border);
+  border-left: 1px solid var(--color-border);
   z-index: 1000;
   transition: transform 0.3s ease;
   border-radius: 8px 0 0 8px;
@@ -99,101 +200,48 @@ nav a:hover {
   display: flex;
 }
 
-/* Sidebar links */
 #sidebar a {
   text-decoration: none;
-  color: var(--accent);
+  color: var(--color-accent);
   font-weight: 600;
-  padding: 12px 16px;
-  margin-bottom: 8px;
+  padding: var(--spacing-sm) var(--spacing-md);
+  margin-bottom: var(--spacing-xs);
   border-radius: 6px;
-  background-color: white;
+  background-color: var(--color-light);
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 #sidebar a:hover {
-  background-color: var(--brand);
-  color: #333;
-}
-
-.sidebar-open #sidebar {
-  display: flex;
+  background-color: var(--color-brand);
+  color: var(--color-text-dark);
 }
 
 .sidebar-close {
   align-self: flex-end;
   font-size: 24px;
   font-weight: bold;
-  color: var(--accent);
+  color: var(--color-accent);
   cursor: pointer;
   margin-bottom: 10px;
   transition: color 0.3s ease;
 }
 
 .sidebar-close:hover {
-  color: var(--brand);
+  color: var(--color-brand);
 }
 
-/* Hide sidebar by default on large screens */
-@media (min-width: 769px) {
-  #sidebar {
-    display: none !important;
-  }
 
-  .menu-toggle {
-    display: none;
-  }
-}
-
-.actions {
-  display: flex;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.btn {
-  background-color: var(--accent);
-  color: white;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 6px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.btn:hover {
-  background-color: var(--brand);
-  color: #333;
-}
-
-.shop-filter {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.category-buttons button {
-  margin-right: 10px;
-  padding: 8px 16px;
-  cursor: pointer;
-}
-
-.secondary {
-  background-color: transparent;
-  border: 2px solid white;
-  color: white;
-  padding: 8px 14px;
-  border-radius: 6px;
-  font-weight: bold;
-  cursor: pointer;
-}
+/*
+|--------------------------------------------------------------------------
+| 6. Layout Components (Hero, Card, Grid)
+|--------------------------------------------------------------------------
+*/
 
 .hero {
   display: flex;
-  gap: 40px;
-  margin-top: 40px;
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
   flex-wrap: wrap;
 }
 
@@ -212,30 +260,22 @@ nav a:hover {
 }
 
 .card {
-  background-color: var(--card-bg);
-  padding: 20px;
-  border-radius: 12px;
+  background-color: var(--color-card-bg);
+  padding: var(--spacing-md);
+  border-radius: var(--spacing-sm);
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  margin-bottom: 20px;
+  margin-bottom: var(--spacing-md);
 }
 
 .search {
   display: flex;
-  gap: 10px;
-  margin-bottom: 12px;
-}
-
-input[type="search"],
-input[type="email"] {
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  flex: 1;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-sm);
 }
 
 .info-grid {
   display: flex;
-  gap: 12px;
+  gap: var(--spacing-sm);
 }
 
 .info-block {
@@ -244,26 +284,22 @@ input[type="email"] {
 
 .info-label {
   font-size: 12px;
-  color: var(--muted);
+  color: var(--color-muted);
 }
 
 .info-value {
   font-weight: 700;
 }
 
-.section {
-  margin-top: 60px;
-}
-
 .section-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-bottom: 14px;
+  margin-bottom: var(--spacing-sm);
 }
 
 .view-all {
-  color: var(--accent);
+  color: var(--color-accent);
   font-weight: 700;
   text-decoration: none;
 }
@@ -271,23 +307,37 @@ input[type="email"] {
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  gap: var(--spacing-md);
 }
 
-.product-card img {
+
+/*
+|--------------------------------------------------------------------------
+| 7. Product & Filtering
+|--------------------------------------------------------------------------
+*/
+
+/* Consolidated product image max-width */
+.product-card img,
+.product img { 
   width: 100%;
-  max-width: 469px; /* Adjust this value as needed */
+  max-width: 100%; /* Let the grid/flex container manage width */
   height: auto;
   object-fit: cover;
   border-radius: 8px;
 }
 
-.product img {
-  width: 100%;
-  max-width: 300px; /* Adjust this value as needed */
-  height: auto;
-  object-fit: cover;
-  border-radius: 8px;
+.shop-filter {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-md);
+}
+
+.category-buttons button {
+  margin-right: 10px;
+  padding: 8px 16px;
+  cursor: pointer;
 }
 
 .product-info {
@@ -303,21 +353,45 @@ input[type="email"] {
 
 .product-desc {
   font-size: 13px;
-  color: var(--muted);
+  color: var(--color-muted);
 }
 
 .price {
   font-weight: bold;
-  color: var(--accent);
+  color: var(--color-accent);
 }
 
-.section-subtext {
-  color: var(--muted);
+.cart-summary {
+  margin-top: 30px;
+  text-align: center;
 }
+
+.cart-summary h3 {
+  font-size: 24px;
+  margin-bottom: var(--spacing-md);
+}
+
+.cart-summary .btn {
+  padding: 12px 24px;
+  font-size: 16px;
+}
+
+.cart-summary .total {
+  margin-top: 15px;
+  font-size: 18px;
+  font-weight: bold;
+ }
+
+
+/*
+|--------------------------------------------------------------------------
+| 8. Feature & Testimonial
+|--------------------------------------------------------------------------
+*/
 
 .features {
   display: flex;
-  gap: 20px;
+  gap: var(--spacing-md);
   flex-wrap: wrap;
 }
 
@@ -328,22 +402,22 @@ input[type="email"] {
 
 .feature-icon {
   font-size: 26px;
-  color: var(--accent);
+  color: var(--color-accent);
 }
 
 .feature-desc {
-  color: var(--muted);
+  color: var(--color-muted);
   margin-top: 8px;
 }
 
 .testimonials {
   display: flex;
-  gap: 20px;
+  gap: var(--spacing-md);
   flex-wrap: wrap;
 }
 
 .testimonial {
-  background-color: #ecf0f1;
+  background-color: #ecf0f1; /* Using a direct color here, consider adding a variable if reused */
   padding: 16px;
   border-radius: 8px;
   flex: 1;
@@ -354,12 +428,19 @@ input[type="email"] {
 }
 
 .testimonial-author {
-  color: var(--muted);
+  color: var(--color-muted);
   margin-top: 8px;
 }
 
+
+/*
+|--------------------------------------------------------------------------
+| 9. Footer & Newsletter
+|--------------------------------------------------------------------------
+*/
+
 .newsletter {
-  margin-top: 20px;
+  margin-top: var(--spacing-md);
 }
 
 .newsletter-content {
@@ -375,16 +456,16 @@ input[type="email"] {
 
 .newsletter-form {
   display: flex;
-  gap: 8px;
+  gap: var(--spacing-xs);
   max-width: 520px;
   width: 100%;
 }
 
 footer {
-  background-color: var(--brand);
-  color: white;
-  padding: 20px;
-  margin-top: 40px;
+  background-color: var(--color-brand);
+  color: var(--color-text-light);
+  padding: var(--spacing-md);
+  margin-top: var(--spacing-lg);
 }
 
 .footer-grid {
@@ -398,7 +479,7 @@ footer {
 }
 
 .footer-note {
-  color: var(--muted);
+  color: var(--color-muted);
   margin-top: 8px;
 }
 
@@ -412,11 +493,31 @@ footer {
 }
 
 .footer-text {
-  color: var(--muted);
+  color: var(--color-muted);
   margin-top: 6px;
 }
 
+
+/*
+|--------------------------------------------------------------------------
+| 10. Media Queries (Mobile First Overrides)
+|--------------------------------------------------------------------------
+*/
+
+/* Hide sidebar components on large screens */
+@media (min-width: 769px) {
+  #sidebar {
+    display: none !important;
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+}
+
+/* Mobile Layout Overrides */
 @media (max-width: 768px) {
+  /* General Flex Components */
   .nav,
   .hero,
   .features,
@@ -427,50 +528,30 @@ footer {
     align-items: center;
   }
 
+  /* Navigation Specific */
   nav a {
-    margin: 10px 0;
+    margin: 10px 0; /* Vertical stacking for links */
   }
 
   .actions {
     flex-direction: column;
-    gap: 10px;
+    gap: var(--spacing-xs);
+    width: 100%; /* Make buttons take full width */
+  }
+  
+  .btn, .btn-secondary {
+    width: 100%;
+    text-align: center;
   }
 
+  /* Hero Section Specific */
   .hero-side {
     width: 100%;
-    margin-top: 20px;
+    margin-top: var(--spacing-md);
   }
 
+  /* Grid Layout Specific */
   .grid {
     grid-template-columns: 1fr;
   }
 }
-
-.cart-summary {
-  margin-top: 30px;
-  text-align: center;
-}
-
-.cart-summary h3 {
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-
-.cart-summary .btn {
-  padding: 12px 24px;
-  font-size: 16px;
-}
-
-.cart-summary .total {
-  margin-top: 15px;
-  font-size: 18px;
-  font-weight: bold;
- }
-
-
-
-
-
-
-
-
